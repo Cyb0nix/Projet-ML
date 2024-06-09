@@ -2,13 +2,14 @@
 import {ref} from 'vue';
 import axios from 'axios';
 
-const file = ref(null);
+let file;
+let prediction = '';
 const previewSrc = ref('');
 const isLoading = ref(false);
 const isResultVisible = ref(false);
 
 function onFileChange(event) {
-  const file = event.target.files[0];
+  file = event.target.files[0];
   if (file) {
     const reader = new FileReader();
     reader.onload = () => {
@@ -35,25 +36,24 @@ function analyzeImage() {
     alert("Please select an image before analyzing.");
     return;
   }
-
+  const formData = new FormData();
+  formData.append('image', file)
   isLoading.value = true;
   isResultVisible.value = false;
 
+  axios.post(
+      'http://localhost:3000/analyze-image',
+      formData).then(response => {
+      prediction = response.data;
 
-  axios.post('http://localhost:3000/analyze-image', {
-    image: file
-  }).then(response => {
-    console.log(response.data);
-    isResultVisible.value = true;
-    isLoading.value = false;
   }).catch(error => {
     console.error(error);
     alert("An error occurred while analyzing the image.")
     isLoading.value = false;
+  }).finally(() => {
+    isLoading.value = false;
+    isResultVisible.value = true;
   });
-
-
-
 
 
 }
@@ -62,7 +62,7 @@ function analyzeImage() {
 <template>
   <div class="flex justify-center items-center ">
     <div class="flex space-x-10 w-2/5">
-      <div >
+      <div>
         <input type="file" @change="onFileChange"
                class="file-input file-input-bordered file-input-info w-full max-w-xs"/>
         <div class="mt-2">
@@ -77,7 +77,7 @@ function analyzeImage() {
       </div>
     </div>
 
-      <div class="divider lg:divider-horizontal"></div>
+    <div class="divider lg:divider-horizontal"></div>
 
     <div class="w-2/5 items-center">
       <div v-if="isLoading" id="loading" class="mt-4">
@@ -85,8 +85,8 @@ function analyzeImage() {
       </div>
 
       <div v-if="isResultVisible" id="result" class="mt-4 ">
-        <h2>Result</h2>
-        <p>Preidtion: {{response.data}} </p>
+        <h1>Result</h1>
+        <h2>Prediction: {{ prediction }} </h2>
       </div>
     </div>
   </div>

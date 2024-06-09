@@ -13,7 +13,6 @@ export class CloudAnalyzerController {
     @UseInterceptors(FileInterceptor('image'))
     @ApiConsumes('multipart/form-data')
     async analyzeImage(@UploadedFile() image: Express.Multer.File): Promise<string> {
-        console.log(image.originalname);
         return this.cloudAnalyzerService.analyzeImage(image);
     }
 

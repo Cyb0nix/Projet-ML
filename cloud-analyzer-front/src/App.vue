@@ -6,7 +6,7 @@ import axios from "axios";
 
 <template>
   <div id="app" >
-    <header class="bg-gray-200">
+    <header class="bg-base-200">
       <div class="cloud-header-div flex items-center ml-20">
         <img class="cloud-logo w-40 h-auto" alt="Logo" src="./assets/cloudLogo.png"/>
         <h1 class="text-2xl font-bold">Cloud Analyzer</h1>
