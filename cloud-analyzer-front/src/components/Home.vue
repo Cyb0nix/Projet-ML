@@ -67,7 +67,7 @@ function analyzeImage() {
                class="file-input file-input-bordered file-input-info w-full max-w-xs"/>
         <div class="mt-2">
           <div v-if="previewSrc" class="mt-4">
-            <img :src="previewSrc" alt="Image Preview" class="max-w-xs"/>
+            <img :src="previewSrc" alt="Preview" class="max-w-xs"/>
           </div>
         </div>
       </div>
