@@ -1,11 +1,10 @@
 <script setup>
 
 import Home from "@/components/Home.vue";
-import axios from "axios";
 </script>
 
 <template>
-  <div id="app" >
+  <div id="app" class="h-screen">
     <header class="bg-base-200">
       <div class="cloud-header-div flex items-center ml-20">
         <img class="cloud-logo w-40 h-auto" alt="Logo" src="./assets/cloudLogo.png"/>
@@ -13,7 +12,7 @@ import axios from "axios";
       </div>
     </header>
 
-    <div class="container-file mt-16  mb-32 ">
+    <div class="container-file h-full">
       <Home/>
     </div>
 

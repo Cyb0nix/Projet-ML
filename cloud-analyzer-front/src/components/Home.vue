@@ -44,7 +44,7 @@ function analyzeImage() {
   axios.post(
       'http://localhost:3000/analyze-image',
       formData).then(response => {
-      prediction = response.data;
+    prediction = response.data;
 
   }).catch(error => {
     console.error(error);
@@ -60,7 +60,7 @@ function analyzeImage() {
 </script>
 
 <template>
-  <div class="flex justify-center items-center ">
+  <div class="flex justify-center items-center h-full -mt-24">
     <div class="flex space-x-10 w-2/5">
       <div>
         <input type="file" @change="onFileChange"
@@ -72,21 +72,23 @@ function analyzeImage() {
         </div>
       </div>
       <div class="flex flex-col space-y-2">
-        <button @click="clearImage" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">Clear</button>
-        <button @click="analyzeImage" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">Analyze</button>
+        <button @click="clearImage" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-wide">
+          <div class="text-xl"> Clear </div>
+        </button>
+        <button @click="analyzeImage" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-wide">
+          <div class="text-xl"> Analyze </div>
+        </button>
       </div>
+      <div class="divider lg:divider-horizontal"></div>
     </div>
-
-    <div class="divider lg:divider-horizontal"></div>
-
     <div class="w-2/5 items-center">
+      <p class="text-3xl font-bold ">Result</p>
       <div v-if="isLoading" id="loading" class="mt-4">
         <span class="loading loading-spinner loading-lg"></span>
       </div>
-
       <div v-if="isResultVisible" id="result" class="mt-4 ">
-        <h1>Result</h1>
-        <h2>Prediction: {{ prediction }} </h2>
+
+        <p class="text-xl">Prediction: {{ prediction }} </p>
       </div>
     </div>
   </div>
