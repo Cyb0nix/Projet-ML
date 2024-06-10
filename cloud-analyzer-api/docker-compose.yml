@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  cloud-analyser-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cloud_analyzer_server
+    ports:
+      - "6789:3000"
+    restart: always

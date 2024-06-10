@@ -25,12 +25,12 @@ export class CloudAnalyzerService {
 
     private getLabel(index: number): string {
         const labels = [
-            'sunny',
-            'thunderstorm',
-            'rainy',
-            'cloudy',
-            'rainy',
-            'cloudy'
+            'Sunny',
+            'Thunderstorm',
+            'Rainy',
+            'Cloudy',
+            'Rainy',
+            'Cloudy'
         ];
 
         return labels[index];
