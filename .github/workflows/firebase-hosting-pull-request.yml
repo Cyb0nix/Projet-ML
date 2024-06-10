@@ -16,6 +16,7 @@ jobs:
       - run: cd cloud-analyzer-front && npm install && npm run build && cd ..
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
+          entryPoint: 'cloud-analyzer-front'
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CLOUD_ANALYZER_76428 }}'
           projectId: cloud-analyzer-76428
