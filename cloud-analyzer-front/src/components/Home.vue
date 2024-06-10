@@ -42,7 +42,7 @@ function analyzeImage() {
   isResultVisible.value = false;
 
   axios.post(
-      'http://localhost:3000/analyze-image',
+      'https://cloud-analyzer-api.cybonix.fr/analyze-image',
       formData).then(response => {
     prediction = response.data;
 
