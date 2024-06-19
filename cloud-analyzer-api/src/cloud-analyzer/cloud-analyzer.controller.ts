@@ -7,7 +7,7 @@ import {ApiBody, ApiConsumes, ApiTags} from "@nestjs/swagger";
 @Controller('/')
 export class CloudAnalyzerController {
 
-    @Inject() private readonly cloudAnalyzerService: CloudAnalyzerService;
+    @Inject() cloudAnalyzerService: CloudAnalyzerService;
 
     @Post('analyze-image')
     @UseInterceptors(FileInterceptor('image'))

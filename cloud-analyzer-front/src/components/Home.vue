@@ -81,7 +81,7 @@ function analyzeImage() {
       </div>
       <div class="divider lg:divider-horizontal"></div>
     </div>
-    <div class="w-2/5 items-center">
+    <div class="w-2/5 items-center pl-4">
       <p class="text-3xl font-bold ">Result</p>
       <div v-if="isLoading" id="loading" class="mt-4">
         <span class="loading loading-spinner loading-lg"></span>
