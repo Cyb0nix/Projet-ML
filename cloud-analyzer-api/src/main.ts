@@ -15,10 +15,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  app.enableCors({
-    origin: 'https://cloud-analyzer.cybonix.fr/', // Replace with your frontend's URL
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE' // If you're using cookies or authorization headers
-  });
+  app.enableCors();
 
   app.use(json({ limit: '100mb' })); // Adjust limit as needed
   app.use(urlencoded({ extended: true, limit: '100mb' }));
