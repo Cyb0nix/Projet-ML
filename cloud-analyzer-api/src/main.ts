@@ -5,6 +5,8 @@ import {json, urlencoded} from "express";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.use(json({ limit: '100mb' })); // Adjust limit as needed
+  app.use(urlencoded({ extended: true, limit: '100mb' }));
 
   const config = new DocumentBuilder()
       .setTitle('Cloud Analyzer API')
@@ -17,8 +19,7 @@ async function bootstrap() {
 
   app.enableCors();
 
-  app.use(json({ limit: '100mb' })); // Adjust limit as needed
-  app.use(urlencoded({ extended: true, limit: '100mb' }));
+
 
   await app.listen(3000);
 }
